@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" 
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="org-penfed-mobile-banking-rsa" version="0.2.5">
+
+    <name>RSA</name>
+    <description>Penfed Mobile Banking RSA Plugin</description>
+    <author>PenFed Credit Union</author>
+
+    <repo>https://github.com/virtusacem/penfedmobile-plugin-rsa.git</repo>
+    <keywords>ecosystem:cordova,cordova,ios,android,rsa</keywords>
+    <license>Propritory</license>
+
+    <js-module src="www/cordova-rsa-plugin.js" name="rsaInfo">
+        <clobbers target="rsaInfo" />
+    </js-module>
+    
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="RSAInfoCollector">
+            	<param name="android-package" value="org.penfed.mobile.banking.rsa.RSAInfoCollector"/>
+            </feature>
+        </config-file>
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+            <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+        </config-file>
+
+        <source-file src="src/android/RSAInfoCollector.java" target-dir="src/org/penfed/mobile/banking/rsa" />
+        <source-file src="src/android/RSAMobileSDK.jar" target-dir="libs" />
+    </platform>
+
+    <!-- ios -->
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+		    <feature name="RSAInfoCollector">
+			    <param name="ios-package" value="RSAInfoCollector"/>
+			    <param name="onload" value="true"/>
+		    </feature>
+        </config-file>
+
+	    <header-file src="src/ios/RSAInfoCollector.h" />
+	    <source-file src="src/ios/RSAInfoCollector.m" />
+	    
+		<header-file src="src/ios/RSAMobileSDK/inc/MobileAPI.h" target-dir="RSAMobileSDK/inc"/>
+        <source-file src="src/ios/RSAMobileSDK/lib/os/libRSAMobileSDK.a" framework="true" target-dir="RSAMobileSDK/lib/os"/>
+		<source-file src="src/ios/RSAMobileSDK/lib/simulator/libRSAMobileSDK.a" framework="true" target-dir="RSAMobileSDK/lib/simulator"/> 
+        
+		<framework src="CoreLocation.framework" />	
+        <framework src="SystemConfiguration.framework" />
+        <framework src="CoreTelephony.framework" />	
+	</platform>
+</plugin>

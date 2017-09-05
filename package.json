@@ -1,0 +1,23 @@
+{
+  "name" : "org-penfed-mobile-banking-rsa",
+  "cordova-name" : "org-penfed-mobile-banking-rsa",
+  "description": "Penfed Mobile Banking RSA Plugin",
+  "version" : "0.2.5",
+  "author" : "PenFed Credit Union",
+  "license" : "Propritory",
+  "repository": {
+      "type": "git",
+      "url": "https://github.com/virtusacem/penfedmobile-plugin-rsa.git"
+  },
+  "keywords": [
+    "cordova",
+    "rsa",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "cordova": {
+    "id": "org-penfed-mobile-banking-rsa",
+    "platforms": ["android","ios"]
+  }
+}
